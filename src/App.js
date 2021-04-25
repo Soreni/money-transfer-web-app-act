@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import MAppBar from './AppBar';
+import CreateAccount from './CreateAccount';
+import ListAccount from './ListAccount';
+import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  
+    <MAppBar />
+    <Switch>
+        <Route
+          exact
+          path='/list'
+          render={(props) => <ListAccount {...props} />} />
+
+       <Route
+          exact
+          path='/create'
+          render={(props) => <CreateAccount {...props} />} />
+      </Switch>
     </div>
   );
 }
